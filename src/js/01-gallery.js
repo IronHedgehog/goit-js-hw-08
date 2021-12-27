@@ -1,12 +1,13 @@
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { galleryItems } from './gallery-items.js';
 
-function createImageGallery(){
-    return galleryItems.map(({preview,original,description})=>{
-        return `     
+function createImageGallery() {
+  return galleryItems
+    .map(({ preview, original, description }) => {
+      return `     
 <div class="gallery__item">
     <a class="gallery__link" href="${original}">
         <img
@@ -17,13 +18,13 @@ function createImageGallery(){
         />
     </a>
 </div>
-        `
-    }).join('')
-    
+        `;
+    })
+    .join('');
 }
-const gallery = document.querySelector('.gallery')
-    
-gallery.insertAdjacentHTML('beforeend',createImageGallery())
+const gallery = document.querySelector('.gallery');
 
-let lightbox = new SimpleLightbox('.gallery a',{captionDelay:'250ms', captionsData:'alt'});
-lightbox.close()
+gallery.insertAdjacentHTML('beforeend', createImageGallery());
+
+let lightbox = new SimpleLightbox('.gallery a', { captionDelay: '250ms', captionsData: 'alt' });
+lightbox.close();
